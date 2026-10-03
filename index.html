@@ -44,27 +44,18 @@ h1{margin:5px 0 2px;font-family:Impact,"Arial Black",sans-serif;font-size:clamp(
 .guide{background:linear-gradient(145deg,#1c1c20,#111114);border:1px solid #4a4a50;border-radius:9px;padding:17px;margin-top:14px;box-shadow:inset 0 1px 0 rgba(255,255,255,.05),0 4px 0 #050506}.guide h2{margin:0 0 8px;font-family:Impact,"Arial Black",sans-serif;text-transform:uppercase;letter-spacing:.04em}.guide h3{color:var(--gold2);font-size:.78rem;letter-spacing:.1em;margin:16px 0 4px;text-transform:uppercase}.guide p,.guide li{color:#b7b1a7;font-size:.82rem;line-height:1.45}.guide ul{padding-left:20px}
 .note{text-align:center;color:#77736d;font-size:.65rem;letter-spacing:.05em;margin:15px 0 20px;text-transform:uppercase}
 @media(min-width:600px){.grid{gap:7px}.sq{border-radius:9px;padding:8px}}
-@media print{body{background:white;color:black}.tabs,.tools,.status,.bingo,.guide,.note,header{display:none}.grid:before{display:none}.sq{color:black;background:white;border-color:#777;box-shadow:none}.sq.marked{background:#ddd;color:black}}
+@keyframes tileHit{0%{transform:scale(1) rotate(0);filter:brightness(1)}25%{transform:scale(.92) rotate(-2deg);filter:brightness(1.7)}55%{transform:scale(1.08) rotate(2deg);filter:brightness(1.35);box-shadow:0 0 28px rgba(255,224,138,.55)}100%{transform:scale(1) rotate(0);filter:brightness(1)}}\n.sq.hit{animation:tileHit .42s cubic-bezier(.2,.9,.3,1)}\n@keyframes bingoSlam{0%{transform:scale(.65) rotate(-3deg);opacity:0;filter:brightness(2)}55%{transform:scale(1.08) rotate(1deg);opacity:1;filter:brightness(1.35)}75%{transform:scale(.98) rotate(-.5deg)}100%{transform:scale(1) rotate(0);filter:brightness(1)}}\n.bingo.show{animation:bingoSlam .75s cubic-bezier(.16,1.4,.35,1) both,ampPulse .55s steps(2,end) infinite alternate}\n.bingo.bingo-party{box-shadow:0 0 38px rgba(255,224,138,.65),0 0 70px rgba(181,42,36,.4),inset 0 0 28px rgba(255,224,138,.18)}\n@keyframes cellWave{0%{transform:scale(1);filter:brightness(1)}45%{transform:scale(1.045);filter:brightness(1.55)}100%{transform:scale(1);filter:brightness(1)}}\n.sq.bingo-wave{animation:cellWave .55s ease both}\n.confetti{position:fixed;z-index:99;top:-12px;width:8px;height:18px;pointer-events:none;animation:confettiFall 1.8s cubic-bezier(.15,.7,.25,1) forwards;transform:rotate(0)}\n@keyframes confettiFall{0%{transform:translate3d(0,0,0) rotate(0deg);opacity:1}100%{transform:translate3d(var(--dx),105vh,0) rotate(var(--spin));opacity:0}}\n@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}\n@media print{body{background:white;color:black}.tabs,.tools,.status,.bingo,.guide,.note,header{display:none}.grid:before{display:none}.sq{color:black;background:white;border-color:#777;box-shadow:none}.sq.marked{background:#ddd;color:black}}
 </style>
 </head>
 <body>
 <div class="app">
-<header><div class="kicker">Fifty Something Tour</div><div class="retro-burst">★ RUSH ★ RUSH ★ RUSH ★</div><h1>Rush Bingo</h1><div class="sub">Observe the ecosystem. Enjoy the show. Don’t go hunting for squares.</div></header>
-<div class="tabs"><button class="tab active" id="t0" onclick="show('connie')">Connie</button><button class="tab" id="t1" onclick="show('brother')">Brandon</button><button class="tab" id="t2" onclick="show('guide')">Field Guide</button></div>
+<header><div class="kicker">Fifty Something Tour</div><div class="retro-burst">★ RUSH ★ RUSH ★ RUSH ★</div><h1>Rush Bingo</h1></header>
+<div class="tabs"><button class="tab active" id="t0" onclick="show('connie')">Connie</button><button class="tab" id="t1" onclick="show('brother')">Brandon</button></div>
 
 <section id="game"><div class="tools"><button class="tool" onclick="resetCard()">Reset this card</button><button class="tool" onclick="print()">Print card</button></div><div class="status" id="status"></div><div class="grid" id="grid"></div><div class="bingo" id="bingo">BINGO — NOW PUT THE PHONE DOWN AND WATCH RUSH.</div></section>
 
-<section class="guide" id="guide" hidden>
-<h2>Field Guide</h2>
-<p><strong>Card rule:</strong> the concert comes first. This is a side quest for waiting, slow parts, intermission, and the post-concert comedown. If something amazing is happening onstage, the Bingo square can wait.</p>
-<p>Mark only things you genuinely witness. Don’t manufacture a square, interrupt anyone, or spend the concert staring at the phone.</p>
-<h3>RUSH SCHOLAR</h3><p>Someone demonstrates unsolicited, highly specific Rush knowledge: album history, trivia, musical details, deep cuts, or lore.</p>
-<h3>OLD-SCHOOL FAN</h3><p>Evidence of a long personal history with Rush: vintage concert stories, old shows, vintage merch, or similar first-hand history. Simply looking old does not count.</p>
-<h3>GEAR NERD</h3><p>Someone demonstrates unusually specific interest in guitars, basses, drums, pedals, amps, stage equipment, or identifying particular gear.</p>
-<h3>FREE SPACE</h3><p><strong>Someone air-drums.</strong> It’s Rush. This one is basically a law of physics.</p>
-<h3>What does not count</h3><ul><li>Something either of you intentionally does.</li><li>Something you only hear about afterward.</li><li>Something you think might have happened but did not actually witness.</li><li>Generic concert behavior unless the square itself makes it Rush-specific.</li></ul>
-</section>
-<div class="note">Two fixed cards. Marking is saved separately on this device. • 100% MORE FUN THAN IT HAS ANY RIGHT TO BE.</div>
+
+
 </div>
 <script>
 const shared=[
@@ -93,10 +84,12 @@ let current="connie";
 function marks(){try{return new Set(JSON.parse(localStorage.getItem("rush-bingo-"+current))||[])}catch(e){return new Set()}}
 function save(m){localStorage.setItem("rush-bingo-"+current,JSON.stringify([...m]))}
 function render(){let g=document.getElementById("grid"),m=marks(),items=[...CARDS[current]];items.splice(12,0,"FREE SPACE — Someone air-drums.");g.innerHTML="";items.forEach((txt,i)=>{let b=document.createElement("button");b.className="sq"+(i===12?" free":"")+(m.has(i)?" marked":"");b.textContent=txt;b.onclick=()=>toggle(i);g.appendChild(b)});let n=[...m].filter(i=>i!==12).length;document.getElementById("status").textContent=n+" squares marked";document.getElementById("bingo").classList.toggle("show",bingo(m))}
-function toggle(i){let m=marks();if(i===12)m.add(i);else m.has(i)?m.delete(i):m.add(i);save(m);render()}
+function toggle(i){let m=marks();if(i===12)m.add(i);else m.has(i)?m.delete(i):m.add(i);save(m);render();requestAnimationFrame(()=>{let b=document.querySelectorAll(".sq")[i];if(b){b.classList.remove("hit");void b.offsetWidth;b.classList.add("hit");setTimeout(()=>b.classList.remove("hit"),450)}});if(bingo(m)){celebrate()}}
 function bingo(m){let L=[[0,1,2,3,4],[5,6,7,8,9],[10,11,12,13,14],[15,16,17,18,19],[20,21,22,23,24],[0,5,10,15,20],[1,6,11,16,21],[2,7,12,17,22],[3,8,13,18,23],[4,9,14,19,24],[0,6,12,18,24],[4,8,12,16,20]];return L.some(r=>r.every(i=>m.has(i)))}
-function resetCard(){if(confirm("Reset all marks on this card?")){localStorage.removeItem("rush-bingo-"+current);render()}}
-function show(which){let isGuide=which==="guide";document.getElementById("game").hidden=isGuide;document.getElementById("guide").hidden=!isGuide;current=isGuide?current:which;["connie","brother","guide"].forEach((x,i)=>document.getElementById("t"+i).classList.toggle("active",x===which));if(!isGuide)render()}
+let lastCelebrated=false;
+function celebrate(){if(lastCelebrated)return;lastCelebrated=true;const banner=document.getElementById("bingo");banner.classList.add("bingo-party");document.querySelectorAll(".sq").forEach((el,i)=>setTimeout(()=>el.classList.add("bingo-wave"),i*28));setTimeout(()=>document.querySelectorAll(".sq.bingo-wave").forEach(el=>el.classList.remove("bingo-wave")),850);for(let i=0;i<42;i++){const x=document.createElement("i");x.className="confetti";x.style.left=(10+Math.random()*80)+"vw";x.style.setProperty("--dx",(Math.random()*260-130)+"px");x.style.setProperty("--spin",(Math.random()*1080-540)+"deg");x.style.animationDelay=(Math.random()*.35)+"s";x.style.background=i%3===0?"#f1c861":i%3===1?"#e2473d":"#f7f3e9";document.body.appendChild(x);setTimeout(()=>x.remove(),2400)}setTimeout(()=>banner.classList.remove("bingo-party"),2200)}
+function resetCard(){if(confirm("Reset all marks on this card?")){localStorage.removeItem("rush-bingo-"+current);lastCelebrated=false;render()}}
+function show(which){current=which;document.getElementById("game").hidden=false;["connie","brother"].forEach((x,i)=>document.getElementById("t"+i).classList.toggle("active",x===which));render()}
 render();
 </script>
 </body>
