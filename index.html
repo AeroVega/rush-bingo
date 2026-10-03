@@ -7,22 +7,44 @@
 <meta name="theme-color" content="#0d0d0f">
 <title>Rush Bingo — Fifty Something Tour</title>
 <style>
-:root{--bg:#0d0d0f;--panel:#18181b;--text:#f5f1e8;--muted:#aaa59b;--gold:#d7a84b;--gold2:#f1cf79;--line:#3a3a40}
+:root{--bg:#070708;--panel:#17171a;--panel2:#202024;--text:#f7f3e9;--muted:#aaa59b;--gold:#d9ad4e;--gold2:#ffe08a;--red:#b52a24;--red2:#e2473d;--line:#45454b}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html,body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Avenir Next",sans-serif}
-body{padding:env(safe-area-inset-top) 12px env(safe-area-inset-bottom)}
-.app{max-width:760px;margin:auto}
-header{text-align:center;padding:18px 4px 10px}.kicker{color:var(--gold);font-size:.7rem;letter-spacing:.18em;font-weight:800;text-transform:uppercase}
-h1{margin:5px 0 2px;font-size:clamp(1.9rem,7vw,3rem);line-height:1}.sub{color:var(--muted);font-size:.84rem;margin-top:8px}
-.tabs,.tools{display:flex;gap:8px;margin:10px 0}.tab,.tool{flex:1;border:1px solid var(--line);background:var(--panel);color:var(--text);border-radius:11px;padding:10px 7px;font:inherit;font-weight:800}.tab.active{background:var(--gold);color:#17130b;border-color:var(--gold)}
-.status{text-align:center;color:var(--muted);font-size:.75rem;min-height:20px;margin-bottom:7px}
-.grid{display:grid;grid-template-columns:repeat(5,1fr);gap:5px}.sq{aspect-ratio:1;border:1px solid var(--line);border-radius:8px;background:var(--panel);color:var(--text);padding:5px;display:flex;align-items:center;justify-content:center;text-align:center;font:700 clamp(.52rem,2.05vw,.76rem)/1.12 -apple-system,BlinkMacSystemFont,"Avenir Next",sans-serif;overflow:hidden}
-.sq:active{transform:scale(.97)}.sq.marked{background:var(--gold);color:#17130b;border-color:var(--gold2)}.sq.free{border:2px solid var(--gold);color:var(--gold2);background:#202024}.sq.marked.free{background:var(--gold);color:#17130b}
-.bingo{display:none;margin-top:10px;padding:11px;border-radius:11px;background:var(--gold);color:#17130b;text-align:center;font-weight:900;letter-spacing:.06em}.bingo.show{display:block}
-.guide{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:16px;margin-top:14px}.guide h2{margin:0 0 8px}.guide h3{color:var(--gold2);font-size:.9rem;margin:16px 0 4px}.guide p,.guide li{color:var(--muted);font-size:.84rem;line-height:1.45}.guide ul{padding-left:20px}
-.note{text-align:center;color:var(--muted);font-size:.72rem;margin:14px 0 20px}
-@media(min-width:600px){.grid{gap:7px}.sq{border-radius:10px;padding:8px}}
-@media print{body{background:white;color:black}.tabs,.tools,.status,.bingo,.guide,.note,header{display:none}.sq{color:black;background:white;border-color:#777}.sq.marked{background:#ddd}}
+html,body{margin:0;min-height:100%;background:#070708;color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Avenir Next",sans-serif}
+body{padding:env(safe-area-inset-top) 12px env(safe-area-inset-bottom);background:
+radial-gradient(circle at 50% -10%,rgba(217,173,78,.16),transparent 34rem),
+radial-gradient(circle at 8% 48%,rgba(181,42,36,.10),transparent 20rem),
+#070708}
+body:before,body:after{content:"";position:fixed;z-index:-1;pointer-events:none;opacity:.16}
+body:before{left:2%;right:2%;top:20px;height:1px;background:repeating-linear-gradient(90deg,transparent 0 9px,#d9ad4e 10px 12px,transparent 13px 22px);box-shadow:0 8px 0 rgba(217,173,78,.35),0 16px 0 rgba(217,173,78,.2)}
+body:after{left:4%;right:4%;bottom:24px;height:1px;background:repeating-linear-gradient(90deg,#b52a24 0 2px,transparent 2px 12px)}
+.app{max-width:760px;margin:auto;position:relative}
+header{text-align:center;padding:19px 4px 11px;position:relative}
+header:before{content:"✦  TORONTO • 1974  —  2026  •  LIVE  ✦";display:block;color:var(--red2);font-size:.56rem;letter-spacing:.19em;font-weight:900;margin-bottom:7px}
+.kicker{color:var(--gold2);font-size:.67rem;letter-spacing:.28em;font-weight:900;text-transform:uppercase;text-shadow:0 0 12px rgba(255,224,138,.22)}
+h1{margin:5px 0 2px;font-family:Impact,"Arial Black",sans-serif;font-size:clamp(2.25rem,9vw,4.1rem);letter-spacing:.035em;line-height:.92;text-transform:uppercase;text-shadow:3px 3px 0 #000,0 0 22px rgba(217,173,78,.18)}
+.sub{color:#c1bbb0;font-size:.78rem;margin-top:10px;letter-spacing:.025em}
+.sub:after{content:"";display:block;width:72px;height:3px;margin:11px auto 0;background:linear-gradient(90deg,transparent,var(--red2),var(--gold2),var(--red2),transparent);transform:skewX(-25deg)}
+.tabs,.tools{display:flex;gap:8px;margin:11px 0}
+.tab,.tool{flex:1;border:1px solid #3c3c42;background:linear-gradient(#202024,#151518);color:var(--text);border-radius:8px;padding:10px 7px;font:inherit;font-weight:900;box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 3px 0 #050506;position:relative}
+.tab:after,.tool:after{content:"";position:absolute;left:12px;right:12px;bottom:-2px;height:1px;background:var(--red);opacity:.75}
+.tab.active{background:linear-gradient(180deg,#f1c861,#bd8d2d);color:#17130b;border-color:#ffe08a;box-shadow:0 0 18px rgba(217,173,78,.16),inset 0 1px 0 rgba(255,255,255,.45),0 3px 0 #050506}
+.status{text-align:center;color:#8f8a82;font-size:.68rem;letter-spacing:.09em;text-transform:uppercase;min-height:20px;margin-bottom:7px}
+.grid{display:grid;grid-template-columns:repeat(5,1fr);gap:5px;position:relative}
+.grid:before{content:"";position:absolute;inset:-6px;border:1px solid rgba(217,173,78,.28);border-radius:13px;pointer-events:none;box-shadow:0 0 30px rgba(181,42,36,.07)}
+.sq{aspect-ratio:1;border:1px solid #39393f;border-radius:7px;background:linear-gradient(145deg,#1b1b1f,#131316);color:var(--text);padding:5px;display:flex;align-items:center;justify-content:center;text-align:center;font:800 clamp(.51rem,2.05vw,.75rem)/1.1 -apple-system,BlinkMacSystemFont,"Avenir Next",sans-serif;overflow:hidden;position:relative;box-shadow:inset 0 1px 0 rgba(255,255,255,.035),0 2px 0 #050506;transition:transform .12s,background .12s,border-color .12s,box-shadow .12s}
+.sq:before{content:"";position:absolute;top:5px;left:6px;width:18px;height:1px;background:var(--red);opacity:.7;transform:rotate(-5deg)}
+.sq:active{transform:scale(.965)}
+.sq.marked{background:linear-gradient(145deg,#f2cb65,#bd8d2d);color:#17130b;border-color:#ffe08a;box-shadow:0 0 15px rgba(217,173,78,.18),inset 0 1px 0 rgba(255,255,255,.45),0 2px 0 #5c4312}
+.sq.marked:before{background:#7f1714;opacity:.8}
+.sq.free{border:2px solid var(--gold);color:var(--gold2);background:radial-gradient(circle,#25252a,#17171a);box-shadow:inset 0 0 0 1px rgba(255,224,138,.12),0 0 12px rgba(217,173,78,.12)}
+.sq.free:before{display:none}
+.sq.marked.free{background:linear-gradient(145deg,#f2cb65,#bd8d2d);color:#17130b}
+.bingo{display:none;margin-top:12px;padding:13px 10px;border:2px solid var(--gold2);border-radius:7px;background:linear-gradient(90deg,var(--red),#7e1715,var(--red));color:#fff5d8;text-align:center;font-family:Impact,"Arial Black",sans-serif;font-size:1.05rem;letter-spacing:.08em;text-shadow:2px 2px #000;box-shadow:0 0 22px rgba(181,42,36,.22),inset 0 1px 0 rgba(255,255,255,.18)}
+.bingo.show{display:block}
+.guide{background:linear-gradient(145deg,#1c1c20,#111114);border:1px solid #4a4a50;border-radius:9px;padding:17px;margin-top:14px;box-shadow:inset 0 1px 0 rgba(255,255,255,.05),0 4px 0 #050506}.guide h2{margin:0 0 8px;font-family:Impact,"Arial Black",sans-serif;text-transform:uppercase;letter-spacing:.04em}.guide h3{color:var(--gold2);font-size:.78rem;letter-spacing:.1em;margin:16px 0 4px;text-transform:uppercase}.guide p,.guide li{color:#b7b1a7;font-size:.82rem;line-height:1.45}.guide ul{padding-left:20px}
+.note{text-align:center;color:#77736d;font-size:.65rem;letter-spacing:.05em;margin:15px 0 20px;text-transform:uppercase}
+@media(min-width:600px){.grid{gap:7px}.sq{border-radius:9px;padding:8px}}
+@media print{body{background:white;color:black}.tabs,.tools,.status,.bingo,.guide,.note,header{display:none}.grid:before{display:none}.sq{color:black;background:white;border-color:#777;box-shadow:none}.sq.marked{background:#ddd;color:black}}
 </style>
 </head>
 <body>
