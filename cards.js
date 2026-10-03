@@ -19,7 +19,7 @@ const connieOnly = [
   "Someone brags about seeing Rush in the ’70s or ’80s.",
   "Someone is wearing extremely old Rush merchandise.",
   "Someone has a Rush jacket or vest covered in patches.",
-  "Someone is wearing something that references a specific Rush album rather than the band generally.",
+  "Someone is wearing something that references a specific album.",
   "SUBDIVISIONS is played.",
   "FREEWILL is played.",
   "RED BARCHETTA is played.",
