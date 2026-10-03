@@ -46,58 +46,27 @@ h1{margin:5px 0 2px;font-size:clamp(1.9rem,7vw,3rem);line-height:1}.sub{color:va
 </div>
 <script>
 const shared=[
-"Someone has a Rush-themed tattoo.",
-"Canadian flag spotted.",
-"RUSH SCHOLAR",
-"OLD-SCHOOL FAN",
-"GEAR NERD",
-"Someone explains something about Rush to another Rush fan who obviously already knows it.",
-"Someone mentions Ayn Rand.",
-"Someone references The Professor.",
-"Someone uses the phrase “time signature.”",
-"Someone mentions Peart’s lyrics.",
-"Someone refers to Rush as “prog”.",
-"Someone impersonates Geddy’s voice.",
-"Someone is wearing extremely old Rush merchandise.",
-"Someone has Geddy Lee hair and glasses.",
-"Someone is wearing something that references a specific Rush album rather than the band generally.",
-"Someone has a Rush jacket or vest covered in patches."
+"Someone has a Rush-themed tattoo.","Canadian flag spotted.","RUSH SCHOLAR","OLD-SCHOOL FAN","GEAR NERD",
+"Someone explains something about Rush to another Rush fan who obviously already knows it.","Someone mentions Ayn Rand.",
+"Someone references The Professor.","Someone uses the phrase “time signature.”","Someone mentions Peart’s lyrics.",
+"Someone refers to Rush as “prog”.","Someone has Geddy Lee hair and glasses."
 ];
 const connieOnly=[
-"Someone brags about seeing Rush in the ’70s or ’80s.",
-"SUBDIVISIONS is played.",
-"FREEWILL is played.",
-"RED BARchetta is played.",
-"NEW WORLD MAN is played.",
-"The entirety of MOVING PICTURES is played.",
-"Anika drops a stick.",
-"Someone praises Anika."
+"Someone brags about seeing Rush in the ’70s or ’80s.","Someone is wearing extremely old Rush merchandise.",
+"Someone has a Rush jacket or vest covered in patches.","Someone is wearing something that references a specific Rush album rather than the band generally.",
+"SUBDIVISIONS is played.","FREEWILL is played.","RED BARchetta is played.","NEW WORLD MAN is played.",
+"The entirety of MOVING PICTURES is played.","Anika drops a stick.","Alex gets an extended spotlight.",
+"Someone tells a story about seeing Neil perform."
 ];
 const brotherOnly=[
-"Someone claims to have seen Rush an impressive number of times.",
-"CLOSER TO THE HEART is played.",
-"FLY BY NIGHT is played.",
-"FORCE TEN is played.",
-"THE TREES is played.",
-"THE ANALOG KID is played.",
-"Anika gets a solo/extended drum spotlight.",
-"Someone says they were skeptical about Anika."
+"Someone claims to have seen Rush an impressive number of times.","Someone is wearing extremely old Rush merchandise.",
+"Someone has a Rush jacket or vest covered in patches.","Someone is wearing Neil Peart’s brimless kufi hat.",
+"CLOSER TO THE HEART is played.","FLY BY NIGHT is played.","FORCE TEN is played.","THE TREES is played.",
+"THE ANALOG KID is played.","Anika gets a solo/extended drum spotlight.","Someone says they were skeptical about Anika.",
+"Geddy gets visibly emotional."
 ];
-const extraA=[
-"Alex gets an extended spotlight.",
-"Someone tells a story about seeing Neil perform.",
-"Someone conducts the band with both hands.",
-"A song prompts someone to identify its album and year."
-];
-const extraB=[
-"Geddy gets an extended spotlight.",
-"Geddy gets visibly emotional.",
-"Someone cries.",
-"Anika and Geddy/Alex share an obvious moment of camaraderie."
-];
-const poolA=shared.concat(connieOnly,extraA),poolB=shared.concat(brotherOnly,extraB);
 function shuffle(a,seed){let x=seed,s=[...a];for(let i=s.length-1;i>0;i--){x=(x*1664525+1013904223)>>>0;let j=x%(i+1);[s[i],s[j]]=[s[j],s[i]]}return s}
-const CARDS={connie:shuffle(poolA,5030),brother:shuffle(poolB,7106)};
+const CARDS={connie:shuffle(shared.concat(connieOnly),5030),brother:shuffle(shared.concat(brotherOnly),7106)};
 let current="connie";
 function marks(){try{return new Set(JSON.parse(localStorage.getItem("rush-bingo-"+current))||[])}catch(e){return new Set()}}
 function save(m){localStorage.setItem("rush-bingo-"+current,JSON.stringify([...m]))}
