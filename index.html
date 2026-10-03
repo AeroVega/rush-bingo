@@ -17,7 +17,7 @@ radial-gradient(circle at 8% 48%,rgba(181,42,36,.10),transparent 20rem),
 body:before,body:after{content:"";position:fixed;z-index:-1;pointer-events:none;opacity:.16}
 body:before{left:2%;right:2%;top:20px;height:1px;background:repeating-linear-gradient(90deg,transparent 0 9px,#d9ad4e 10px 12px,transparent 13px 22px);box-shadow:0 8px 0 rgba(217,173,78,.35),0 16px 0 rgba(217,173,78,.2)}
 body:after{left:4%;right:4%;bottom:24px;height:1px;background:repeating-linear-gradient(90deg,#b52a24 0 2px,transparent 2px 12px)}
-.app{max-width:760px;margin:auto;position:relative}
+.app{max-width:760px;margin:auto;position:relative}.retro-burst{display:inline-block;margin:0 auto 2px;color:#f1c861;font-family:Impact,"Arial Black",sans-serif;font-size:.62rem;letter-spacing:.2em;transform:rotate(-2deg);text-shadow:2px 2px 0 #8b1b18,0 0 8px rgba(241,200,97,.35);animation:rocker .8s steps(2,end) infinite alternate}@keyframes rocker{from{transform:rotate(-2deg) scale(1)}to{transform:rotate(2deg) scale(1.025)}}
 header{text-align:center;padding:19px 4px 11px;position:relative}
 header:before{content:"✦  TORONTO • 1974  —  2026  •  LIVE  ✦";display:block;color:var(--red2);font-size:.56rem;letter-spacing:.19em;font-weight:900;margin-bottom:7px}
 .kicker{color:var(--gold2);font-size:.67rem;letter-spacing:.28em;font-weight:900;text-transform:uppercase;text-shadow:0 0 12px rgba(255,224,138,.22)}
@@ -33,14 +33,14 @@ h1{margin:5px 0 2px;font-family:Impact,"Arial Black",sans-serif;font-size:clamp(
 .grid:before{content:"";position:absolute;inset:-6px;border:1px solid rgba(217,173,78,.28);border-radius:13px;pointer-events:none;box-shadow:0 0 30px rgba(181,42,36,.07)}
 .sq{aspect-ratio:1;border:1px solid #39393f;border-radius:7px;background:linear-gradient(145deg,#1b1b1f,#131316);color:var(--text);padding:5px;display:flex;align-items:center;justify-content:center;text-align:center;font:800 clamp(.51rem,2.05vw,.75rem)/1.1 -apple-system,BlinkMacSystemFont,"Avenir Next",sans-serif;overflow:hidden;position:relative;box-shadow:inset 0 1px 0 rgba(255,255,255,.035),0 2px 0 #050506;transition:transform .12s,background .12s,border-color .12s,box-shadow .12s}
 .sq:before{content:"";position:absolute;top:5px;left:6px;width:18px;height:1px;background:var(--red);opacity:.7;transform:rotate(-5deg)}
-.sq:active{transform:scale(.965)}
+.sq:active{transform:scale(.965)}.sq:nth-child(3n){transform:rotate(-.35deg)}.sq:nth-child(3n+1){transform:rotate(.25deg)}.sq:nth-child(5n){box-shadow:inset 0 1px 0 rgba(255,255,255,.035),0 2px 0 #050506,0 0 8px rgba(181,42,36,.08)}
 .sq.marked{background:linear-gradient(145deg,#f2cb65,#bd8d2d);color:#17130b;border-color:#ffe08a;box-shadow:0 0 15px rgba(217,173,78,.18),inset 0 1px 0 rgba(255,255,255,.45),0 2px 0 #5c4312}
 .sq.marked:before{background:#7f1714;opacity:.8}
 .sq.free{border:2px solid var(--gold);color:var(--gold2);background:radial-gradient(circle,#25252a,#17171a);box-shadow:inset 0 0 0 1px rgba(255,224,138,.12),0 0 12px rgba(217,173,78,.12)}
 .sq.free:before{display:none}
 .sq.marked.free{background:linear-gradient(145deg,#f2cb65,#bd8d2d);color:#17130b}
-.bingo{display:none;margin-top:12px;padding:13px 10px;border:2px solid var(--gold2);border-radius:7px;background:linear-gradient(90deg,var(--red),#7e1715,var(--red));color:#fff5d8;text-align:center;font-family:Impact,"Arial Black",sans-serif;font-size:1.05rem;letter-spacing:.08em;text-shadow:2px 2px #000;box-shadow:0 0 22px rgba(181,42,36,.22),inset 0 1px 0 rgba(255,255,255,.18)}
-.bingo.show{display:block}
+.bingo{display:none;animation:ampPulse .55s steps(2,end) infinite alternate;margin-top:12px;padding:13px 10px;border:2px solid var(--gold2);border-radius:7px;background:linear-gradient(90deg,var(--red),#7e1715,var(--red));color:#fff5d8;text-align:center;font-family:Impact,"Arial Black",sans-serif;font-size:1.05rem;letter-spacing:.08em;text-shadow:2px 2px #000;box-shadow:0 0 22px rgba(181,42,36,.22),inset 0 1px 0 rgba(255,255,255,.18)}
+.bingo.show{display:block}@keyframes ampPulse{from{transform:scale(1)}to{transform:scale(1.015)}}
 .guide{background:linear-gradient(145deg,#1c1c20,#111114);border:1px solid #4a4a50;border-radius:9px;padding:17px;margin-top:14px;box-shadow:inset 0 1px 0 rgba(255,255,255,.05),0 4px 0 #050506}.guide h2{margin:0 0 8px;font-family:Impact,"Arial Black",sans-serif;text-transform:uppercase;letter-spacing:.04em}.guide h3{color:var(--gold2);font-size:.78rem;letter-spacing:.1em;margin:16px 0 4px;text-transform:uppercase}.guide p,.guide li{color:#b7b1a7;font-size:.82rem;line-height:1.45}.guide ul{padding-left:20px}
 .note{text-align:center;color:#77736d;font-size:.65rem;letter-spacing:.05em;margin:15px 0 20px;text-transform:uppercase}
 @media(min-width:600px){.grid{gap:7px}.sq{border-radius:9px;padding:8px}}
@@ -49,8 +49,8 @@ h1{margin:5px 0 2px;font-family:Impact,"Arial Black",sans-serif;font-size:clamp(
 </head>
 <body>
 <div class="app">
-<header><div class="kicker">Fifty Something Tour</div><h1>Rush Bingo</h1><div class="sub">Observe the ecosystem. Enjoy the show. Don’t go hunting for squares.</div></header>
-<div class="tabs"><button class="tab active" id="t0" onclick="show('connie')">Connie</button><button class="tab" id="t1" onclick="show('brother')">Brother</button><button class="tab" id="t2" onclick="show('guide')">Field Guide</button></div>
+<header><div class="kicker">Fifty Something Tour</div><div class="retro-burst">★ RUSH ★ RUSH ★ RUSH ★</div><h1>Rush Bingo</h1><div class="sub">Observe the ecosystem. Enjoy the show. Don’t go hunting for squares.</div></header>
+<div class="tabs"><button class="tab active" id="t0" onclick="show('connie')">Connie</button><button class="tab" id="t1" onclick="show('brother')">Brandon</button><button class="tab" id="t2" onclick="show('guide')">Field Guide</button></div>
 
 <section id="game"><div class="tools"><button class="tool" onclick="resetCard()">Reset this card</button><button class="tool" onclick="print()">Print card</button></div><div class="status" id="status"></div><div class="grid" id="grid"></div><div class="bingo" id="bingo">BINGO — NOW PUT THE PHONE DOWN AND WATCH RUSH.</div></section>
 
@@ -64,7 +64,7 @@ h1{margin:5px 0 2px;font-family:Impact,"Arial Black",sans-serif;font-size:clamp(
 <h3>FREE SPACE</h3><p><strong>Someone air-drums.</strong> It’s Rush. This one is basically a law of physics.</p>
 <h3>What does not count</h3><ul><li>Something either of you intentionally does.</li><li>Something you only hear about afterward.</li><li>Something you think might have happened but did not actually witness.</li><li>Generic concert behavior unless the square itself makes it Rush-specific.</li></ul>
 </section>
-<div class="note">Two fixed cards. Marking is saved separately on this device.</div>
+<div class="note">Two fixed cards. Marking is saved separately on this device. • 100% MORE FUN THAN IT HAS ANY RIGHT TO BE.</div>
 </div>
 <script>
 const shared=[
